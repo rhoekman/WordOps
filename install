@@ -380,6 +380,8 @@ wo_install_acme_sh() {
         else
             git clone --depth=50 https://github.com/Neilpang/acme.sh.git /opt/acme.sh -q
         fi
+        # Open-up firewall ports for Nginx to allow certs to be verified.
+        ufw allow "Nginx Full"
         cd /opt/acme.sh || exit 1
         # create conf directories
         mkdir -p /etc/letsencrypt/{config,live,renewal}
